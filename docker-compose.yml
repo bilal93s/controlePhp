@@ -2,9 +2,9 @@ version: '3'
 services:
   web:
     build: site
-    container_name: apache-3IW-controle
+    container_name: apache-3IW-2
     ports :
-     - "87:87"
+     - "8085:80"
     volumes:
      - ./www:/var/www/html/
      - ./server/000-default.conf:/etc/apache2/sites-available/000-default.conf
@@ -15,9 +15,9 @@ services:
 
   database:
     image: mysql:5.7
-    container_name: mysql-mvc
+    container_name: mysql-mvc-2
     ports :
-      - "3302:3302"
+      - "3303:3303"
     environment:
       MYSQL_DATABASE: mvcdocker2
       MYSQL_ROOT_PASSWORD: password
@@ -29,10 +29,10 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
-    container_name: phpmyadmin-mvc-controle
+    container_name: phpmyadmin-mvc-2
     depends_on:
       - database
     ports:
-      - 8585:87
+      - 8585:80
     environment:
         - PMA_ARBITRARY=1
